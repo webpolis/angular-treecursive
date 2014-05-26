@@ -7,14 +7,14 @@ This directive will help you to display a nested tree in your Angular project, a
 ```javascript
 $scope.myTree = [
     {
-        name: 'John',
-        collapsed: true
+        name: 'John'
     },
     {
         name: 'Marie'
     },
     {
         name: 'Jackie',
+        collapsed: true,
         children: [
             {
                 name: 'Junior'
