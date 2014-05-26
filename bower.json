@@ -1,0 +1,23 @@
+{
+  "name": "angular-treecursive",
+  "main": "angular-treecursive.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/webpolis/angular-treecursive",
+  "authors": [
+    "Nicolas Iglesias <nico@webpolis.com.ar>"
+  ],
+  "description": "Customizable recursive tree for angular",
+  "keywords": [
+    "angular",
+    "recursive",
+    "tree"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
