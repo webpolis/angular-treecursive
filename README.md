@@ -27,7 +27,7 @@ $scope.myTree = [
 }];
 ```
 
-Please checkout [this demo](http://jsfiddle.net/webpolis/TyxH8/10/)
+Please checkout [this demo](http://jsfiddle.net/webpolis/TyxH8)
 
 ###Installation
 You can install it via **bower** by doing `bower install angular-treecursive`.
