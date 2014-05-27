@@ -1,7 +1,7 @@
 {
   "name": "angular-treecursive",
   "main": "angular-treecursive.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://github.com/webpolis/angular-treecursive",
   "authors": [
     "Nicolas Iglesias <nico@webpolis.com.ar>"

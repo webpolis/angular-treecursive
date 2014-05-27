@@ -14,7 +14,6 @@ $scope.myTree = [
     },
     {
         name: 'Jackie',
-        collapsed: true,
         children: [
             {
                 name: 'Junior'
@@ -46,15 +45,11 @@ There are no specific properties required for your nodes, other than the `childr
 <br>
 So, for example:
 ```
-<treecursive nodes="myTree" on-select="treeNodeSelected">
-    <a href="" ng-click="node.collapsed = !node.collapsed; $emit('selectNode', node)">{{node.name}}</a>
+<treecursive nodes="myTree">
+    <a href="" ng-click="myCustomSelectionMethod(node)">{{node.name}}</a>
 </treecursive>
 ```
 As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like I did by managing the *collapsed* state. 
 ###Configuration
-Configuration is simple; we just need two attributes: `nodes` (*required*), specifying the name of the array for your tree, and `on-select`(*optional*), which specifies a name of the method you want to execute once the `selectNode`event is emmited from within the directive.
-So, whenever you want to do something with the *node*, you just do `$emit('selectNode', node)` and the method you defined in **on-select** will be executed and will receive the node as unique argument.
-> I know you may wonder why using an event instead of a plain function. The issue is that this directive requires the transclusion feature from Angular, in whose context the directive's main scope is not inherited by the nodes generated recursively. I will check further this issue and update when possible.
+Configuration is simple. We just need one attribute: `nodes` (*required*), specifying the name of the array for your tree.
 
-###Some words
-I prefer to use the *transclusion* instead of hardcoding the output of the directive to make it more customizable, and to avoid confusion by requesting the developers long and nasty configuration options. You are free to choose the way you build the nodes.
