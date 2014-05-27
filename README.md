@@ -49,7 +49,7 @@ So, for example:
     <a href="" ng-click="myCustomSelectionMethod(node)">{{node.name}}</a>
 </treecursive>
 ```
-As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like I did by managing the *collapsed* state. 
+As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like setting a "collapsed" property in your nodes to open/close a folder icon (See [demo](http://jsfiddle.net/webpolis/TyxH8)). 
 ###Configuration
 Configuration is simple. We just need one attribute: `nodes` (*required*), specifying the name of the array for your tree.
 
