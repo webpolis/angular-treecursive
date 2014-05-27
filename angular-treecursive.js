@@ -5,10 +5,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
         transclude: true,
         replace: true,
         controller: function($scope, $element, $attrs) {
-            $scope.treecursiveNodes = $scope[$attrs.nodes];
-            if (!angular.isDefined($scope.treecursiveNodes) && angular.isObject($scope.node) && angular.isArray($scope.node.children)) {
-                $scope.treecursiveNodes = $scope.node.children;
-            }
+            $scope.treecursiveNodes = $scope.$eval($attrs.nodes);
         },
         template: '<ol class="treecursive"><treecursive-node ng-repeat="node in treecursiveNodes track by $id(node)"><div ng-transclude></div></treecursive-node></ol>',
     };
@@ -28,7 +25,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                     element.append(clone);
                 });
                 var updateChildren = function() {
-                    var newTree = angular.element('<treecursive ng-show="!node.collapsed"></treecursive>');
+                    var newTree = angular.element('<treecursive ng-show="!node.collapsed" nodes="node.children"></treecursive>');
                     newTree.append(innerElement);
                     element.append(newTree);
                     $compile(element.contents())(scope);
