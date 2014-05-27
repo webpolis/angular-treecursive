@@ -27,6 +27,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                 var updateChildren = function() {
                     var newTree = angular.element('<treecursive ng-show="!node.collapsed" nodes="node.children"></treecursive>');
                     newTree.append(innerElement);
+                    element.find('ol.treecursive').remove();
                     element.append(newTree);
                     $compile(element.contents())(scope);
                 };
