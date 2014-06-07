@@ -12,6 +12,10 @@
     "recursive",
     "tree"
   ],
+  "dependencies": {
+    "angular": ">= 1.2.0",
+    "es5-shim": "2.3.0"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",
