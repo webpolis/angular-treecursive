@@ -22,10 +22,16 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                     if (innerElement === null) {
                         innerElement = clone.clone();
                     }
-                    element.append(clone);
                 });
                 var updateChildren = function() {
-                    var newTree = angular.element('<treecursive ng-show="!node.collapsed" nodes="node.children"></treecursive>');
+                    var attrs = [];
+                    angular.forEach(['ng-hide', 'ng-if'], function(attr) {
+                        var val = angular.element(innerElement[1]).attr(attr);
+                        if (angular.isDefined(val)) {
+                            attrs.push(attr + '="' + val + '"');
+                        }
+                    });
+                    var newTree = angular.element('<treecursive ' + attrs.join(' ') + ' ng-show="!node.collapsed" nodes="node.children"></treecursive>');
                     newTree.append(innerElement);
                     element.find('ol.treecursive').remove();
                     element.append(newTree);
