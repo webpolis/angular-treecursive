@@ -22,6 +22,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                     if (innerElement === null) {
                         innerElement = clone.clone();
                     }
+                    element.append(clone);
                 });
                 var updateChildren = function() {
                     var attrs = [];
