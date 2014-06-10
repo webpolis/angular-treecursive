@@ -41,7 +41,7 @@ var myApp = angular.module('myApp', ['webpolis.directives']);
 ```
 
 ###Usage
-There are no specific properties required for your nodes, other than the `children` property which is *only needed* if you want to include more nodes. Then you can traverse into infinite levels!
+There are no specific properties required for your nodes, other than the `children` property which is *only needed* if you want to include more nodes and the `collapsed` boolean attribute, in case you need to expand or collapse the children nodes. Then you can traverse into infinite levels!
 <br>
 So, for example:
 ```
@@ -49,7 +49,7 @@ So, for example:
     <a href="" ng-click="myCustomSelectionMethod(node)">{{node.name}}</a>
 </treecursive>
 ```
-As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like setting a "collapsed" property in your nodes to open/close a folder icon (See [demo](http://jsfiddle.net/webpolis/TyxH8)). 
+As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like setting a `collapsed` property in your nodes to open/close a folder icon (See [demo](http://jsfiddle.net/webpolis/TyxH8)). 
 ###Configuration
 Configuration is simple. We just need one attribute: `nodes` (*required*), specifying the name of the array for your tree.
 
