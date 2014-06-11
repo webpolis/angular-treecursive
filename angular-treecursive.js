@@ -14,7 +14,6 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                     if(newValue !== oldValue) {
                         scope.treecursiveNodes = newValue;
                     }
-
                 });
             }
         }
