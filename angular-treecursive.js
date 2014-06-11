@@ -45,6 +45,9 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                             updateChildren();
                         }
                     });
+                    if (angular.isDefined(scope.node) && angular.isArray(scope.node.children)) {
+                        updateChildren();
+                    }
                 };
             }
         };
