@@ -1,6 +1,6 @@
 ##Angular-Treecursive
 #### Customizable recursive tree for angular.
-#####by Nicolas Iglesias <nico@webpolis.com.ar>
+######by Nicolas Iglesias <nico@webpolis.com.ar> and awesome contributors
 <br>
 This directive will help you to display a nested tree in your Angular project, and customize the nodes by using your own template or HTML code, without nasty configuration options. There is no limit for your trees, as long as you respect a similar JSON structure:
 
