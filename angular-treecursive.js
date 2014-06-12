@@ -50,7 +50,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                         $compile(element.contents())(scope);
                     };
                     scope.$watchCollection('node.children', function(n, o) {
-                        if (n !== o && angular.isArray(n) && n.length > 0) {
+                        if (angular.isArray(n) && n.length > 0) {
                             updateChildren();
                         }
                     });
