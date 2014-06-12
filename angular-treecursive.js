@@ -8,6 +8,15 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
             $scope.treecursiveNodes = $scope.$eval($attrs.nodes);
         },
         template: '<ol class="treecursive"><treecursive-node ng-repeat="node in treecursiveNodes track by $id(node)"><div ng-transclude></div></treecursive-node></ol>',
+        compile: function(tElement, attr) {
+            return function(scope, element, attrs, controller, transclude) {
+                scope.$watchCollection(attrs.nodes, function(newValue, oldValue) {
+                    if (newValue !== oldValue) {
+                        scope.treecursiveNodes = newValue;
+                    }
+                });
+            };
+        }
     };
 }).directive('treecursiveNode', ['$compile',
     function($compile) {
@@ -45,9 +54,6 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                             updateChildren();
                         }
                     });
-                    if (angular.isDefined(scope.node) && angular.isArray(scope.node.children)) {
-                        updateChildren();
-                    }
                 };
             }
         };
