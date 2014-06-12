@@ -11,7 +11,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
         compile: function(tElement, attr) {
             return function(scope, element, attrs, controller, transclude) {
                 scope.$watchCollection(attrs.nodes, function(newValue, oldValue) {
-                    if (newValue !== oldValue) {
+                    if (!angular.equals(newValue, oldValue)) {
                         scope.treecursiveNodes = newValue;
                     }
                 });
