@@ -34,7 +34,6 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                     if (innerElement === null) {
                         innerElement = clone.clone();
                     }
-                    $element.empty();
                     angular.element(clone[1]).attr('ng-click', false);
                     $element.append(clone);
                 });
