@@ -30,6 +30,12 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
             require: '^treecursive',
             template: '<li></li>',
             link: function($scope, $element, $attrs, controller) {
+                var updateChildren = function() {
+                    var sub = angular.element('<treecursive nodes="node.children" ng-show="!node.collapsed"></treecursive>');
+                    sub.append(innerElement);
+                    $element.append(sub);
+                    $compile($element.contents())($scope);
+                };
                 controller.$transclude($scope, function(clone) {
                     if (innerElement === null) {
                         innerElement = clone.clone();
@@ -37,12 +43,11 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                     angular.element(clone[1]).attr('ng-click', false);
                     $element.append(clone);
                 });
-                if (angular.isArray($scope.node.children)) {
-                    var sub = angular.element('<treecursive nodes="node.children" ng-show="!node.collapsed"></treecursive>');
-                    sub.append(innerElement);
-                    $element.append(sub);
-                    $compile($element.contents())($scope);
-                }
+                $scope.$watchCollection('node.children', function(n, o) {
+                    if (angular.isArray(n) && n.length > 0) {
+                        updateChildren();
+                    }
+                });
             }
         };
     }
