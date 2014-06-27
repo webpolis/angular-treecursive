@@ -8,11 +8,12 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
             function($scope, $element, $attrs, $transclude) {
                 this.$transclude = $transclude;
                 $scope.treecursiveNodes = $scope.$eval($attrs.nodes);
+                $scope.children = $attrs.children;
             }
         ],
         template: '<ol class="treecursive"><treecursive-node ng-repeat="node in treecursiveNodes track by $id(node)"><div ng-transclude></div></treecursive-node></ol>',
         compile: function() {
-            return function(scope, element, attrs, controller, transclude) {
+            return function(scope, element, attrs) {
                 scope.$watchCollection(attrs.nodes, function(newValue, oldValue) {
                     if (!angular.equals(newValue, oldValue)) {
                         scope.treecursiveNodes = newValue;
@@ -31,7 +32,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
             template: '<li></li>',
             link: function($scope, $element, $attrs, controller) {
                 var updateChildren = function() {
-                    var sub = angular.element('<treecursive nodes="node.children" ng-show="!node.collapsed"></treecursive>');
+                    var sub = angular.element('<treecursive children="' + $scope.children + '" nodes="node.' + $scope.children + '" ng-show="!node.collapsed"></treecursive>');
                     sub.append(innerElement);
                     $element.append(sub);
                     $compile($element.contents())($scope);
@@ -43,7 +44,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                     angular.element(clone[1]).attr('ng-click', false);
                     $element.append(clone);
                 });
-                $scope.$watchCollection('node.children', function(n, o) {
+                $scope.$watchCollection('node.' + $scope.children, function(n, o) {
                     if (angular.isArray(n) && n.length > 0) {
                         updateChildren();
                     }
