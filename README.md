@@ -49,8 +49,8 @@ So, for example:
 </treecursive>
 ```
 As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like setting a `collapsed` property in your nodes to open/close a folder icon (See [demo](http://jsfiddle.net/webpolis/TyxH8)).
-<br>
-If you have a different name that holds the node children, you can specify that also.
+<br><br>
+If you have a different name for the property that holds the children, you can specify that also.
 <br>
 For example, if the property name that holds the children is named 'books':
 ```
