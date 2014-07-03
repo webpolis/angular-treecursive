@@ -48,7 +48,17 @@ So, for example:
     <a href="" ng-click="myCustomSelectionMethod(node)">{{node.name}}</a>
 </treecursive>
 ```
-As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like setting a `collapsed` property in your nodes to open/close a folder icon (See [demo](http://jsfiddle.net/webpolis/TyxH8)). 
+As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like setting a `collapsed` property in your nodes to open/close a folder icon (See [demo](http://jsfiddle.net/webpolis/TyxH8)).
+<br>
+If you have a different name that holds the node children, you can specify that also.
+<br>
+For example, if the property name that holds the children is named 'books':
+```
+<treecursive nodes="myTree" children="books">
+    <a href="" ng-click="myCustomSelectionMethod(node)">{{node.name}}</a>
+</treecursive>
+```
+
 ###Configuration
 Configuration is simple. We just need one attribute: `nodes` (*required*), specifying the name of the array for your tree.
 
