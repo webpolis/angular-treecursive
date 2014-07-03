@@ -8,7 +8,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
             function($scope, $element, $attrs, $transclude) {
                 this.$transclude = $transclude;
                 $scope.treecursiveNodes = $scope.$eval($attrs.nodes);
-                $scope.children = $attrs.children;
+                $scope.children = $attrs.children || 'children';
             }
         ],
         template: '<ol class="treecursive"><treecursive-node ng-repeat="node in treecursiveNodes track by $id(node)"><div ng-transclude></div></treecursive-node></ol>',
