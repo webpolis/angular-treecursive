@@ -25,7 +25,7 @@ $scope.myTree = [
 }];
 ```
 
-Please checkout [this demo](http://jsfiddle.net/TyxH8/80/)
+Please checkout [this demo](http://jsfiddle.net/webpolis/js4wg/)
 
 ###Installation
 You can install it via **bower** by doing `bower install angular-treecursive`.
@@ -48,7 +48,7 @@ So, for example:
     <a href="" ng-click="myCustomSelectionMethod(node)">{{node.name}}</a>
 </treecursive>
 ```
-As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like setting a `collapsed` property in your nodes to open/close a folder icon (See [demo](http://jsfiddle.net/webpolis/TyxH8)).
+As you can see, the members of your tree are represented by `node`, so you can do whatever you want there, like setting a `collapsed` property in your nodes to open/close a folder icon (See [demo](http://jsfiddle.net/webpolis/js4wg/)).
 <br><br>
 If you have a different name for the property that holds the children, you can specify that also.
 <br>
