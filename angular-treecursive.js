@@ -9,7 +9,7 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                 this.$transclude = $transclude;
                 $scope.treecursiveNodes = $scope.$eval($attrs.nodes);
                 $scope.children = $attrs.children || 'children';
-                $scope.ngShowOrNgIf = ($attrs.lazyRender === 'true') ? 'ng-if' : 'ng-show';
+                $scope.lazyRender = $attrs.lazyRender || 'true';
             }
         ],
         template: '<ol class="treecursive"><treecursive-node ng-repeat="node in treecursiveNodes track by $id(node)"><div ng-transclude></div></treecursive-node></ol>',
@@ -33,7 +33,8 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
             template: '<li></li>',
             link: function($scope, $element, $attrs, controller) {
                 var updateChildren = function() {
-                    var sub = angular.element('<treecursive children="' + $scope.children + '" nodes="node.' + $scope.children + '" ' + $scope.ngShowOrNgIf + '="!node.collapsed"></treecursive>');
+                    var ngShowOrNgIf = ($scope.lazyRender === 'true') ? 'ng-if' : 'ng-show';
+                    var sub = angular.element('<treecursive children="' + $scope.children + '" lazy-render="' + $scope.lazyRender + '" nodes="node.' + $scope.children + '" ' + ngShowOrNgIf + '="!node.collapsed"></treecursive>');
                     sub.append(innerElement);
                     $element.append(sub);
                     $compile($element.contents())($scope);
