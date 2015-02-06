@@ -59,6 +59,20 @@ For example, if the property name that holds the children is named 'books':
 </treecursive>
 ```
 
+<br><br>
+If you are working with very large data structures, you may want to initially collapse all nodes (by setting the
+`collapsed` attribute to false on each one), then render the tree lazily. This is done by specifying the `lazy-render`
+attribute as true as in the following example:
+```
+<treecursive nodes="myVeryLargeTree" lazy-render="true">
+    <a href="" ng-click="myCustomSelectionMethod(node)">{{node.name}}</a>
+</treecursive>
+```
+Essentially this will tell the directive to use ng-if for hiding collapsed branched instead of ng-show. The subtle
+differencs is that ng-show will always render the HTML but may choose to hide it using CSS, where as ng-if postpones
+the rendering of the HTML until it's visible (and removes it when it is no longer visible). For large trees which
+are initially collapsed, the lazy-render option will greatly speed up processing.
+
 ###Configuration
 Configuration is simple. We just need one attribute: `nodes` (*required*), specifying the name of the array for your tree.
 
