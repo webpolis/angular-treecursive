@@ -37,13 +37,12 @@ angular.module('webpolis.directives', []).directive('treecursive', function() {
                     var sub = angular.element('<treecursive children="' + $scope.children + '" lazy-render="' + $scope.lazyRender + '" nodes="node.' + $scope.children + '" ' + ngShowOrNgIf + '="!node.collapsed"></treecursive>');
                     sub.append(innerElement);
                     $element.append(sub);
-                    $compile($element.contents())($scope);
+                    $compile(sub[0])($scope);
                 };
                 controller.$transclude($scope, function(clone) {
                     if (innerElement === null) {
                         innerElement = clone.clone();
                     }
-                    angular.element(clone[1]).attr('ng-click', false);
                     $element.append(clone);
                 });
                 $scope.$watchCollection('node.' + $scope.children, function(n, o) {
