@@ -68,7 +68,7 @@ attribute as true as in the following example:
     <a href="" ng-click="myCustomSelectionMethod(node)">{{node.name}}</a>
 </treecursive>
 ```
-Essentially this will tell the directive to use ng-if for hiding collapsed branched instead of ng-show. The subtle
+Essentially this will tell the directive to use ng-if for hiding collapsed branches instead of ng-show. The subtle
 difference is that ng-show will always render the HTML but may choose to hide it using CSS, where as ng-if postpones
 the rendering of the HTML until it's visible (and removes it when it is no longer visible). For large trees which
 are initially collapsed, the lazy-render option will greatly speed up processing.
